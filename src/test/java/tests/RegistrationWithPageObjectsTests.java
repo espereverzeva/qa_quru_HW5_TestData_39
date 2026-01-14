@@ -7,39 +7,40 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.TestData.*;
 
 public class RegistrationWithPageObjectsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
+    TestData testData = new TestData();
 
     @Test
     void fillFormTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Anna")
-                .setLastName("Big")
-                .setEmaiName("Big@mai.ru")
-                .setGender("Female")
-                .setNumberName("9638527441")
-                .setDateOfBirth("19", "March", "1991")
-                .setSubject("Chemistry")
-                .setHobbies("Sports")
-                .setUploadPicture("zxc.png")
-                .setCurrentAddress("Russia, Novosibirsk")
-                .setState("Haryana")
-                .setCity("Karnal")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmaiName(email)
+                .setGender(gender)
+                .setNumberName(phoneNumber)
+                .setDateOfBirth(day,month,year)
+                .setSubject(subjects)
+                .setHobbies(hobbies)
+                .setUploadPicture(picture)
+                .setCurrentAddress(fullAddress)
+                .setState(testData.state)
+                .setCity(testData.city)
                 .setSubmit()
-                .checkResult("Student Name", "Anna Big")
-                .checkResult("Student Email", "Big@mai.ru")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "9638527441")
-                .checkResult("Date of Birth", "19 March,1991")
-                .checkResult("Subjects", "Chemistry")
-                .checkResult("Hobbies", "Sports")
-                .checkResult("Picture", "zxc.png")
-                .checkResult("Address", "Russia, Novosibirsk")
-                .checkResult("State and City", "Haryana Karnal")
+                .checkResult("Student Name", fullName)
+                .checkResult("Student Email", email)
+                .checkResult("Gender", gender)
+                .checkResult("Mobile", phoneNumber)
+                .checkResult("Date of Birth", dateBirth)
+                .checkResult("Subjects", subjects)
+                .checkResult("Hobbies", hobbies)
+                .checkResult("Picture", picture)
+                .checkResult("Address", fullAddress)
+                .checkResult("State and City", testData.state + " " + testData.city)
                 .closeModal();
 
     }
@@ -48,14 +49,14 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void minFormTest() {
             registrationPage.openPage()
-                    .setFirstName("Anna")
-                    .setLastName("Big")
-                    .setGender("Female")
-                    .setNumberName("9638527441")
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setGender(gender)
+                    .setNumberName(phoneNumber)
                     .setSubmit()
-                    .checkResult("Student Name", "Anna Big")
-                    .checkResult("Gender", "Female")
-                    .checkResult("Mobile", "9638527441")
+                    .checkResult("Student Name", fullName)
+                    .checkResult("Gender", gender)
+                    .checkResult("Mobile", phoneNumber)
                     .closeModal();
 
     }
@@ -63,14 +64,14 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void negativeFormTest() {
         registrationPage.openPage()
-                .setFirstName("Anna")
+                .setFirstName(firstName)
                 //не заполнена фамилия
-                .setGender("Female")
-                .setNumberName("9638527441")
+                .setGender(gender)
+                .setNumberName(phoneNumber)
                 .setSubmit()
-                .checkResult("Student Name", "Anna")
-                .checkResult("Gender", "Female")
-                .checkResult("Mobile", "9638527441")
+                .checkResult("Student Name", fullName)
+                .checkResult("Gender", gender)
+                .checkResult("Mobile", phoneNumber)
                 .closeModal();
 
     }
