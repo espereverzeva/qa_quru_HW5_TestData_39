@@ -54,7 +54,6 @@ public class TextBoxTests {
         $("#submit").click();
 
 
-
         $(".table-responsive").shouldHave(text("Anna Big"));
         $(".table-responsive").shouldHave(text("Big@mai.ru"));
         $(".table-responsive").shouldHave(text("Female"));
