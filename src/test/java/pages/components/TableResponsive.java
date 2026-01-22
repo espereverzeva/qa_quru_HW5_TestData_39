@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class TableResponsive {
     private final SelenideElement tableResponsiveInput = $(".table-responsive");
 
-    public void setTable (String key, String value){
+    public void setTable(String key, String value) {
         tableResponsiveInput.$(byText(key)).parent().shouldHave(text(value));
     }
 }

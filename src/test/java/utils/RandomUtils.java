@@ -2,6 +2,7 @@ package utils;
 
 import com.github.javafaker.Faker;
 
+
 public class RandomUtils {
     private final Faker faker = new Faker();
 
@@ -32,7 +33,7 @@ public class RandomUtils {
     }
 
     public String getGender() {
-        return faker.options().option("Male","Female","Other");
+        return faker.options().option("Male", "Female", "Other");
     }
 
     public String getPhoneNumber() {
@@ -53,7 +54,7 @@ public class RandomUtils {
     }
 
     public String getPicture() {
-        return faker.options().option("aaa.png","zxc.png");
+        return faker.options().option("aaa.png", "zxc.png");
     }
 
     public String getFullAddress() {
@@ -61,12 +62,12 @@ public class RandomUtils {
     }
 
     public String getSubjects() {
-        return faker.options().option("Arts","Accouting","Biology",
-                "Civics","English","Economics","Hindi","History","Maths","Physics",
-                "Computer Science","Chemistry","Commerce","Social Studies");
+        return faker.options().option("Arts", "Accounting", "Biology",
+                "Civics", "English", "Economics", "Hindi", "History", "Maths", "Physics",
+                "Computer Science", "Chemistry", "Commerce", "Social Studies");
     }
 
     public String getHobbies() {
-        return faker.options().option("Sports","Reading","Music");
+        return faker.options().option("Sports", "Reading", "Music");
     }
 }
